@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_toastr/flutter_toastr';
+import 'package:flutter_toastr/flutter_toastr.dart';
+
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -24,56 +25,56 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyHomePage> {
+
+  _showToast(String msg, {int? duration, int? gravity}) {
+    FlutterToastr.show(msg, context, duration: duration, gravity: gravity);
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Toast plugin example app'),
+          title: const Text('Flutter Toastr for non-blocking notifications'),
         ),
         body: Center(
           child: Column(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: RaisedButton(
-                    child: Text('Show Short Toast'),
-                    onPressed: () => showToast("Show Short Toast")),
+                child: ElevatedButton(
+                    child: Text('Show Short Toastr'),
+                    onPressed: () => _showToast("Show Short Toastr")),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: RaisedButton(
-                    child: Text('Show Long Toast'),
-                    onPressed: () => showToast("Show Long Toast", duration: FlutterToastr.LENGTH_LONG)),
+                child: ElevatedButton(
+                    child: Text('Show Long Toastr'),
+                    onPressed: () => _showToast("Show Long Toastr", duration: FlutterToastr.lengthLong)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: RaisedButton(
-                    child: Text('Show Bottom Toast'),
-                    onPressed: () => showToast("Show Bottom Toast", gravity: FlutterToastr.BOTTOM)),
+                child: ElevatedButton(
+                    child: Text('Show Bottom Toastr'),
+                    onPressed: () => _showToast("Show Bottom Toastr", gravity: FlutterToastr.bottom)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: RaisedButton(
-                    child: Text('Show Center Toast'),
-                    onPressed: () => showToast("Show Center Toast", gravity: FlutterToastr.CENTER)),
+                child: ElevatedButton(
+                    child: Text('Show Center Toastr'),
+                    onPressed: () => _showToast("Show Center Toastr", gravity: FlutterToastr.center)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: RaisedButton(
-                    child: Text('Show Top Toast'),
-                    onPressed: () => showToast(
-                        "Ola",
-                        gravity: FlutterToastr.TOP)),
+                child: ElevatedButton(
+                    child: Text('Show Top Toastr'),
+                    onPressed: () => _showToast(
+                        "Show Top Toastr",
+                        gravity: FlutterToastr.top)),
               ),
             ],
           ),
         ),
       ),
     );
-  }
-
-  void showToast(String msg, {int duration, int gravity}) {
-    FlutterToastr.show(msg, context, duration: duration, gravity: gravity);
   }
 }
