@@ -44,19 +44,19 @@ class _MyAppState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(10.0),
                 child: RaisedButton(
                     child: Text('Show Long Toast'),
-                    onPressed: () => showToast("Show Long Toast", duration: Toast.LENGTH_LONG)),
+                    onPressed: () => showToast("Show Long Toast", duration: FlutterToastr.LENGTH_LONG)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: RaisedButton(
                     child: Text('Show Bottom Toast'),
-                    onPressed: () => showToast("Show Bottom Toast", gravity: Toast.BOTTOM)),
+                    onPressed: () => showToast("Show Bottom Toast", gravity: FlutterToastr.BOTTOM)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: RaisedButton(
                     child: Text('Show Center Toast'),
-                    onPressed: () => showToast("Show Center Toast", gravity: Toast.CENTER)),
+                    onPressed: () => showToast("Show Center Toast", gravity: FlutterToastr.CENTER)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -64,7 +64,7 @@ class _MyAppState extends State<MyHomePage> {
                     child: Text('Show Top Toast'),
                     onPressed: () => showToast(
                         "Ola",
-                        gravity: Toast.TOP)),
+                        gravity: FlutterToastr.TOP)),
               ),
             ],
           ),
@@ -74,6 +74,6 @@ class _MyAppState extends State<MyHomePage> {
   }
 
   void showToast(String msg, {int duration, int gravity}) {
-    Toast.show(msg, context, duration: duration, gravity: gravity);
+    FlutterToastr.show(msg, context, duration: duration, gravity: gravity);
   }
 }
