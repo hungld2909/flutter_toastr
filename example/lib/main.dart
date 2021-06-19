@@ -25,10 +25,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyHomePage> {
-
-  _showToast(String msg, {int? duration, int? gravity}) {
-    FlutterToastr.show(msg, context, duration: duration, gravity: gravity);
+  _showToast(String msg, {int? duration, int? position}) {
+    FlutterToastr.show(msg, context, duration: duration, position: position);
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,27 +49,29 @@ class _MyAppState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
                     child: Text('Show Long Toastr'),
-                    onPressed: () => _showToast("Show Long Toastr", duration: FlutterToastr.lengthLong)),
+                    onPressed: () => _showToast("Show Long Toastr",
+                        duration: FlutterToastr.lengthLong)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
                     child: Text('Show Bottom Toastr'),
-                    onPressed: () => _showToast("Show Bottom Toastr", gravity: FlutterToastr.bottom)),
+                    onPressed: () => _showToast("Show Bottom Toastr",
+                        position: FlutterToastr.bottom)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
                     child: Text('Show Center Toastr'),
-                    onPressed: () => _showToast("Show Center Toastr", gravity: FlutterToastr.center)),
+                    onPressed: () => _showToast("Show Center Toastr",
+                        position: FlutterToastr.center)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
                     child: Text('Show Top Toastr'),
-                    onPressed: () => _showToast(
-                        "Show Top Toastr",
-                        gravity: FlutterToastr.top)),
+                    onPressed: () => _showToast("Show Top Toastr",
+                        position: FlutterToastr.top)),
               ),
             ],
           ),

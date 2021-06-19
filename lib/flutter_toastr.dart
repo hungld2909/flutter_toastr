@@ -3,24 +3,28 @@ library flutter_toastr;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+/// the package library class for calling from client end.
 class FlutterToastr {
-  static final int lengthShort = 1;
-  static final int lengthLong = 2;
-  static final int bottom = 0;
-  static final int center = 1;
-  static final int top = 2;
+  static final int lengthShort = 1; /// a fixed length to show toast message
+  static final int lengthLong = 2; /// a fixed length to show toast message
+  static final int bottom = 0; /// a fixed value for toast message position
+  static final int center = 1; /// a fixed value for toast message position
+  static final int top = 2; /// a fixed value for toast message position
 
+  /// method to show the toast message
   static void show(String msg, BuildContext context,
-      {int? duration = 1,
-        int? gravity = 0,
-        Color backgroundColor = const Color(0xAA000000),
-        textStyle = const TextStyle(fontSize: 15, color: Colors.white),
-        double backgroundRadius = 20,
-        bool? rootNavigator,
-        Border? border}) {
+      {int? duration = 1, /// duration : how long do you want to show the message
+      int? position = 0, /// position : where do you want to show the toast message, you can pass bottom, center, top or any defined value
+      Color backgroundColor = const Color(0xAA000000), /// defines the background color of toast message
+      textStyle = const TextStyle(fontSize: 15, color: Colors.white), /// for toast message styling
+      double backgroundRadius = 20, /// you can apply toast message background radius
+      bool? rootNavigator,
+      Border? border, /// you can specify background border
+      }
+      ) {
     FlutterToastrView.dismiss();
-    FlutterToastrView.createView(msg, context, duration, gravity, backgroundColor,
-        textStyle, backgroundRadius, border, rootNavigator);
+    FlutterToastrView.createView(msg, context, duration, position,
+        backgroundColor, textStyle, backgroundRadius, border, rootNavigator);
   }
 }
 
@@ -38,16 +42,16 @@ class FlutterToastrView {
   static bool _isVisible = false;
 
   static void createView(
-      String msg,
+      String msg, /// the message you want to show as toast
       BuildContext context,
-      int? duration,
-      int? gravity,
-      Color background,
-      TextStyle textStyle,
-      double backgroundRadius,
-      Border? border,
+      int? duration, /// duration : how long do you want to show the message
+      int? position, /// position : where do you want to show the toast message, you can pass bottom, center, top or any defined value
+      Color background, /// defines the background color of toast message
+      TextStyle textStyle, /// for toast message styling
+      double backgroundRadius, /// you can apply toast message background radius
+      Border? border, /// you can specify background border
       bool? rootNavigator) async {
-    overlayState = Overlay.of(context, rootOverlay: rootNavigator??false);
+    overlayState = Overlay.of(context, rootOverlay: rootNavigator ?? false);
 
     _overlayEntry = new OverlayEntry(
       builder: (BuildContext context) => FlutterToastrWidget(
@@ -67,15 +71,16 @@ class FlutterToastrView {
                   child: Text(msg, softWrap: true, style: textStyle),
                 )),
           ),
-          gravity: gravity),
+          position: position),
     );
     _isVisible = true;
     overlayState!.insert(_overlayEntry!);
-    await new Future.delayed(
-        Duration(seconds: duration == null ? FlutterToastr.lengthShort : duration));
+    await new Future.delayed(Duration(
+        seconds: duration == null ? FlutterToastr.lengthShort : duration));
     dismiss();
   }
 
+  /// dismisses the toast message after the duration provided
   static dismiss() async {
     if (!_isVisible) {
       return;
@@ -85,21 +90,25 @@ class FlutterToastrView {
   }
 }
 
+/// the widget to implement the toastr message
 class FlutterToastrWidget extends StatelessWidget {
   FlutterToastrWidget({
     Key? key,
     required this.widget,
-    required this.gravity,
+    required this.position,
   }) : super(key: key);
 
   final Widget widget;
-  final int? gravity;
+  final int? position;
 
   @override
   Widget build(BuildContext context) {
+
+    /// showing the toastr message
     return new Positioned(
-        top: gravity == 2 ? MediaQuery.of(context).viewInsets.top + 50 : null,
-        bottom: gravity == 0 ? MediaQuery.of(context).viewInsets.bottom + 50 : null,
+        top: position == 2 ? MediaQuery.of(context).viewInsets.top + 50 : null,
+        bottom:
+            position == 0 ? MediaQuery.of(context).viewInsets.bottom + 50 : null,
         child: Material(
           color: Colors.transparent,
           child: widget,

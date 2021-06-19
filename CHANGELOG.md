@@ -9,3 +9,7 @@
 ## 1.0.2
 
 * Fixed bug and updated documentation
+
+## 1.0.3
+
+* Updated documentation and improved code quality
