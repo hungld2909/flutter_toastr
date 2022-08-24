@@ -50,7 +50,9 @@ class FlutterToastrView {
       TextStyle textStyle, /// for toast message styling
       double backgroundRadius, /// you can apply toast message background radius
       Border? border, /// you can specify background border
-      bool? rootNavigator) async {
+      bool? rootNavigator,
+      Widget icon
+  ) async {
     overlayState = Overlay.of(context, rootOverlay: rootNavigator ?? false);
 
     _overlayEntry = new OverlayEntry(
@@ -68,7 +70,13 @@ class FlutterToastrView {
                   ),
 //                   margin: EdgeInsets.symmetric(horizontal: 20),
                   padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-                  child: Text(msg, softWrap: true, style: textStyle),
+                  child: Row(
+                    children: [
+                      icon,
+                      const SizedBox(width: 10),
+                      Text(msg, softWrap: true, style: textStyle),
+                  )
+                  
                 )),
           ),
           position: position),
