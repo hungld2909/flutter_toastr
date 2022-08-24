@@ -69,7 +69,7 @@ class FlutterToastrView {
                     borderRadius: BorderRadius.circular(backgroundRadius),
                     border: border,
                   ),
-//                   margin: EdgeInsets.symmetric(horizontal: 20),
+                  margin: EdgeInsets.symmetric(vertical: 24),
                   padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
                   child: Row(
                     children: [
