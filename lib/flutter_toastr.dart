@@ -73,8 +73,7 @@ class FlutterToastrView {
                   padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
                   child: Row(
                     children: [
-                      icon,
-                      const SizedBox(width: 10),
+                      icon ?? const SizedBox(),
                       Text(msg, softWrap: true, style: textStyle),
                     ]
                   )
