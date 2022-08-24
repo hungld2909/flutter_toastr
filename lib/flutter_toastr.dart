@@ -76,6 +76,7 @@ class FlutterToastrView {
                       widget,
                       const SizedBox(width: 10),
                       Text(msg, softWrap: true, style: textStyle),
+                    ]
                   )
                   
                 )),
