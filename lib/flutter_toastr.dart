@@ -70,7 +70,7 @@ class FlutterToastrView {
                     border: border,
                   ),
                   margin: EdgeInsets.symmetric(vertical: 24),
-                  padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
+                  padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
                   child: Row(
                     children: [
                       icon ?? const SizedBox(),
