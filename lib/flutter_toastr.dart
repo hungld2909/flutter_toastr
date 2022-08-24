@@ -20,12 +20,12 @@ class FlutterToastr {
       double backgroundRadius = 20, /// you can apply toast message background radius
       bool? rootNavigator,
       Border? border, /// you can specify background border
-      Widget? icon
+      Widget? widget
       }
       ) {
     FlutterToastrView.dismiss();
-    FlutterToastrView.createView(msg,icon, context, duration, position,
-        backgroundColor, textStyle, backgroundRadius, border, rootNavigator);
+    FlutterToastrView.createView(msg,context, duration, position,
+        backgroundColor, textStyle, backgroundRadius, border, rootNavigator,widget);
   }
 }
 
@@ -52,7 +52,7 @@ class FlutterToastrView {
       double backgroundRadius, /// you can apply toast message background radius
       Border? border, /// you can specify background border
       bool? rootNavigator,
-      Widget? icon
+      Widget? widget
   ) async {
     overlayState = Overlay.of(context, rootOverlay: rootNavigator ?? false);
 
@@ -73,7 +73,7 @@ class FlutterToastrView {
                   padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
                   child: Row(
                     children: [
-                      icon,
+                      widget,
                       const SizedBox(width: 10),
                       Text(msg, softWrap: true, style: textStyle),
                   )
