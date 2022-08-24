@@ -52,7 +52,7 @@ class FlutterToastrView {
       double backgroundRadius, /// you can apply toast message background radius
       Border? border, /// you can specify background border
       bool? rootNavigator,
-      Widget icon
+      Widget? icon
   ) async {
     overlayState = Overlay.of(context, rootOverlay: rootNavigator ?? false);
 
