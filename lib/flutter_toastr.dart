@@ -20,10 +20,11 @@ class FlutterToastr {
       double backgroundRadius = 20, /// you can apply toast message background radius
       bool? rootNavigator,
       Border? border, /// you can specify background border
+      Widget icon
       }
       ) {
     FlutterToastrView.dismiss();
-    FlutterToastrView.createView(msg, context, duration, position,
+    FlutterToastrView.createView(msg,icon, context, duration, position,
         backgroundColor, textStyle, backgroundRadius, border, rootNavigator);
   }
 }
