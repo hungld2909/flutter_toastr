@@ -74,6 +74,7 @@ class FlutterToastrView {
                   child: Row(
                     children: [
                       icon ?? const SizedBox(),
+                      const SizedBox(width: 10),
                       Flexible(
                         child: Text(msg, softWrap: true, style: textStyle),)
                       
